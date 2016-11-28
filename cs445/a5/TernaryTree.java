@@ -268,22 +268,24 @@ public class TernaryTree<T> implements TernaryTreeInterface<T> {
             return !nodeStack.isEmpty() || (currentNode != null);
         }
         public T next() {
+        
             boolean foundNext = false;
             TernaryNode<T> leftChild, middleChild, rightChild, nextNode = null;
 
             // Find leftmost leaf
             while (currentNode != null) {
+            	
                 nodeStack.push(currentNode);
                 leftChild = currentNode.getLeftChild();
-                if (leftChild == null) {
-                    currentNode = currentNode.getMiddleChild();
-                    middleChild = currentNode;
-                    if(middleChild == null){
+                if (leftChild == null) {     
+                	
+                	middleChild = currentNode.getMiddleChild();
+                    if(middleChild == null){          	
                     	  currentNode = currentNode.getRightChild();
-                    }else{
+                    }else{                    	
                     	currentNode = middleChild;
                     }
-                } else {
+                } else {        	
                     currentNode = leftChild;
                 }
             }
